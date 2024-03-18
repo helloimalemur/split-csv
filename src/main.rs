@@ -15,7 +15,9 @@ fn read_csv(path: String) -> Result<(StringRecord, Vec<StringRecord>), Error> {
     for result in rdr.records() {
         match result {
             Ok(res) => {
-                rows.push(res)
+                let r = res.clone();
+                // println!("{:?}", r);
+                rows.push(r);
             }
             Err(_) => {}
         }
@@ -60,7 +62,9 @@ fn main() {
                     println!("Adding row: {}", count);
                     match rows.1.pop() {
                         None => {break}
-                        Some(e) => {wtr.write_record(e.as_byte_record()).unwrap()}
+                        Some(e) => {
+                            wtr.write_record(e.as_byte_record()).unwrap();
+                        }
                     }
                     count += 1;
                 }
