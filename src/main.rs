@@ -49,7 +49,7 @@ fn main() {
 
             for file in 0..files {
                 println!("Starting file: {}", file);
-                let out_file_name = format!("./{}{}", out, out_file_num);
+                let out_file_name = format!("./{}{}{}", out, out_file_num, ".csv");
                 let mut out_file = File::create(out_file_name).unwrap();
                 let mut wtr = csv::Writer::from_writer(out_file);
 
